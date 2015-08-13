@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150812085951) do
+ActiveRecord::Schema.define(version: 20150813013210) do
+
+  create_table "authentications", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4,   null: false
+    t.string   "provider",   limit: 190, null: false
+    t.string   "uid",        limit: 190, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "authentications", ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",            limit: 190, null: false
+    t.string   "email",            limit: 190
     t.string   "crypted_password", limit: 255
     t.string   "salt",             limit: 255
     t.datetime "created_at"
