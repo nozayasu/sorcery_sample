@@ -23,6 +23,7 @@
   </div>
   <%= yield %>
 
-  <%= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook) %>
+  <p><%= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook) %></p>
+  <p><%= link_to 'Login with Twitter', auth_at_provider_path(:provider => :twitter) %></p>
   </body>
 </html>
